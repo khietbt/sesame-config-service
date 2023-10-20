@@ -1,0 +1,36 @@
+server:
+  port: ${SERVER_PORT}
+spring:
+  application:
+    name: sesame-config-service
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: ${SPRING_CLOUD_SERVER_NATIVE_SEARCH_LOCATIONS}
+  profiles:
+    include: native
+
+eureka:
+  client:
+    fetchRegistry: false
+    registerWithEureka: true
+    serviceUrl:
+      defaultZone: ${EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE}
+  instance:
+    hostname: ${EUREKA_INSTANCE_HOSTNAME}
+
+management:
+  endpoints:
+    web:
+      discovery:
+        enabled: true
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]"

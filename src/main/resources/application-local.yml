@@ -1,0 +1,4 @@
+EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE: http://localhost:8002/eureka
+EUREKA_INSTANCE_HOSTNAME: localhost
+SERVER_PORT: 8001
+SPRING_CLOUD_SERVER_NATIVE_SEARCH_LOCATIONS: file:sesame-services/sesame-config-service/src/main/resources/configuration-files
