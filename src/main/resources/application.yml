@@ -10,26 +10,28 @@ spring:
           search-locations: ${SPRING_CLOUD_SERVER_NATIVE_SEARCH_LOCATIONS}
   profiles:
     include: native
-
-eureka:
-  client:
-    fetchRegistry: false
-    registerWithEureka: true
-    serviceUrl:
-      defaultZone: ${EUREKA_CLIENT_SERVICE_URL_DEFAULT_ZONE}
-  instance:
-    hostname: ${EUREKA_INSTANCE_HOSTNAME}
-
-management:
-  endpoints:
-    web:
-      discovery:
-        enabled: true
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: always
+  security:
+    user:
+      password: sesame-config-service-user
+      name: sesame-config-service-user
+      roles: sesame-config-service-users
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8180/realms/sesame-config-service
+      client:
+        registration:
+          keycloak:
+            client-id: sesame-config-service-client
+            client-secret: 0WCGWVWcnGZKSOPJxmEzb2eZwVAMfl8x
+            scope:
+              - openid
+            authorization-grant-type: authorization_code
+        provider:
+          keycloak:
+            user-name-attribute: preferred_username
+            issuer-uri: http://localhost:8180/realms/sesame-config-service
+            jwk-set-uri: http://localhost:8180/realms/sesame-config-service/protocol/openid-connect/certs
 
 logging:
   pattern:
