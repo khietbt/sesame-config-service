@@ -8,7 +8,7 @@ import org.springframework.cloud.config.server.EnableConfigServer;
 @SpringBootApplication
 public class SesameConfigService {
 
-  public static void main(String[] args) {
-    SpringApplication.run(SesameConfigService.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(SesameConfigService.class, args);
+    }
 }
